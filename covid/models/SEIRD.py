@@ -91,10 +91,10 @@ class SEIRD(SEIRDBase):
 
 
         # First observation
-        with numpyro.handlers.scale(scale_factor=0.5):
+        with numpyro.handlers.scale(scale=0.5):
             y0 = observe("y0", x0[6], det_prob, det_noise_scale, obs=confirmed0)
             
-        with numpyro.handlers.scale(scale_factor=2.0):
+        with numpyro.handlers.scale(scale=2.0):
             z0 = observe("z0", x0[5], det_prob_d, det_noise_scale, obs=death0)
 
         params = (beta0, sigma, gamma, 
@@ -141,10 +141,10 @@ class SEIRD(SEIRDBase):
 
 
         # Noisy observations
-        with numpyro.handlers.scale(scale_factor=0.5):
+        with numpyro.handlers.scale(scale=0.5):
             y = observe("y" + suffix, x[:,6], det_prob, det_noise_scale, obs = confirmed)
 
-        with numpyro.handlers.scale(scale_factor=2.0):
+        with numpyro.handlers.scale(scale=2.0):
             z = observe("z" + suffix, x[:,5], det_prob_d, det_noise_scale, obs = death)
 
         return beta, x, y, z

@@ -10,8 +10,11 @@ setup(
     author_email='sheldon@cs.umass.edu',
     install_requires=[
         'patsy>=0.5.1',
-        'numpyro>=0.4.1'
-        'jax>=0.2.3'
+        'numpyro==0.6.0',
+        'jax>=0.2.3',
+	'pandas',
+	'cachetools',
+	'matplotlib'
     ],
     keywords='machine learning bayesian statistics',
     license='MIT'
