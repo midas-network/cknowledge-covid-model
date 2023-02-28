@@ -12,9 +12,9 @@ setup(
         'patsy>=0.5.1',
         'numpyro==0.6.0',
         'jax>=0.2.3',
-	'pandas',
+	'pandas==1.1.5',
 	'cachetools',
-	'matplotlib'
+	'matplotlib==3.4.0rc1'
     ],
     keywords='machine learning bayesian statistics',
     license='MIT'

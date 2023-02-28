@@ -1,0 +1,21 @@
+{
+  "alias": "covid",
+  "automation_alias": "script",
+  "automation_uid": "",
+  "category": "Tests",
+  "category_sort": 1000,
+  "deps": [
+    {
+      "tags": "detect,os"
+    },
+    {
+      "tags": "get,sys-utils-cm"
+    }
+  ],
+  "tags": [
+    "covid",
+    "bayesian",
+    "model"
+  ],
+  "uid": ""
+}

@@ -185,13 +185,16 @@ class Model():
         
         
     '''These are methods e.g., call self.z(samples) to get z'''
-    #z = getter('z')
-    #y = getter('y')
-    mean_y = getter('mean_y')
-    mean_z = getter('mean_z')
+    z = getter('z')
+    y = getter('y')
+    mean_y = y
+    mean_z = z
 
-    z = mean_z
-    y = mean_y
+    #mean_y = getter('mean_y')
+    #mean_z = getter('mean_z')
+
+    #z = mean_z
+    #y = mean_y
     
     # There are only available in some models but easier to define here
     dz = getter('dz')

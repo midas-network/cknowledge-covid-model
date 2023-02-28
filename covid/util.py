@@ -7,6 +7,7 @@ from . import states
 import covid.models.SEIRD
 
 import pandas as pd
+import matplotlib as mplt
 import matplotlib.pyplot as plt
 
 import numpy as onp
@@ -196,13 +197,14 @@ def plot_growth_rate(mcmc_samples, start, model=SEIRModel, ax=None):
     sigma = mcmc_samples['sigma'][:,None]
     gamma = mcmc_samples['gamma'][:,None]
     t = pd.date_range(start=start, periods=beta.shape[1], freq='D')
+    ct = mplt.dates.date2num(t.to_pydatetime())
 
     growth_rate = SEIRModel.growth_rate((beta, sigma, gamma))
 
     pi = onp.percentile(growth_rate, (10, 90), axis=0)
-    df = pd.DataFrame(index=t, data={'growth_rate': onp.median(growth_rate, axis=0)})
+    df = pd.DataFrame(index=ct, data={'growth_rate': onp.median(growth_rate, axis=0)})
     df.plot(style='-o', ax=ax)
-    ax.fill_between(t, pi[0,:], pi[1,:], alpha=0.1)
+    ax.fill_between(ct, pi[0,:], pi[1,:], alpha=0.1)
 
     ax.axhline(0, linestyle='--')
     
