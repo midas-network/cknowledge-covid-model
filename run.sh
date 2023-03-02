@@ -3,18 +3,24 @@
 
 CM_TMP_CURRENT_SCRIPT_PATH=${CM_TMP_CURRENT_SCRIPT_PATH:-$PWD}
 #export VAR=abc
-bash Anaconda-latest-Linux-x86_64.sh
-conda create --name covid python=3.6 -y
-eval "$(conda shell.bash hook)"
+
+#echo "Activate conda environment"
+#conda activate ${CM_ENV_CONDA}
+
 cd ${CM_TMP_CURRENT_SCRIPT_PATH}
-echo "state: ${cm_env_state}"
-echo "start: ${cm_env_start}"
-echo "end: ${cm_env_end}"
-conda run -n covid pip install --upgrade pip && pip install -e . &&  cd scripts && python run_sir.py ${cm_env_state} --start ${cm_env_start} --end ${cm_env_end}
+echo "Install Bayesian Model..."
+pip install --upgrade pip && pip install -e .
+cd scripts
+echo "Run Model..."
+echo "state: ${CM_ENV_STATE}"
+echo "start: ${CM_ENV_START}"
+echo "end: ${CM_ENV_END}"
+python run_sir.py ${CM_ENV_STATE} --start ${CM_ENV_START} --end ${CM_ENV_END}
+
+#conda deactivate
 
 test $? -eq 0 || exit $?
 
 echo "CM_NEW_VAR_FROM_RUN=$MLPERF_XYZ" > tmp-run-env.out
 
 
-#&&  cd scripts && python run_sir.py PA --start 2020-03-05 --end 2020-03-06 

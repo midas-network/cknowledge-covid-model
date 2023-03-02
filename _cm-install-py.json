@@ -4,6 +4,9 @@
   "automation_uid": "",
   "category": "Tests",
   "category_sort": 1000,
+  "env": {
+    "CM_PYTHON_VERSION": "3.8.10"
+  },
   "deps": [
     {
       "tags": "detect,os"
@@ -12,7 +15,16 @@
       "tags": "get,sys-utils-cm"
     },
     {
-      "tags": "get, python, get-python3"
+      "names": [
+        "python",
+        "python3",
+        "python3.8.10",
+        "bayesian-covid-model"
+      ],
+      "env": {
+        "CM_VERSION": "3.8.10"
+      },
+      "tags": "install, python, src-python"
     },
     {
       "tags": "print,python-version"
