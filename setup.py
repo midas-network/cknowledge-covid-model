@@ -14,7 +14,7 @@ setup(
         'jax>=0.2.3',
 	'pandas==1.1.5',
 	'cachetools',
-	'matplotlib==3.4.0rc1'
+	'matplotlib==3.3.4'
     ],
     keywords='machine learning bayesian statistics',
     license='MIT'
